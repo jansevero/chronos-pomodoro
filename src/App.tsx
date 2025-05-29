@@ -7,7 +7,7 @@ export default function App() {
 
   return (
     <>
-      <Heading />
+      <Heading attr={123}> Hello World! </Heading>
     </>
   )
 }
