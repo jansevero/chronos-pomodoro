@@ -1,5 +1,13 @@
-export default function App() {
-  console.log('Hello World')
+import { Heading } from './components/Heading';
 
-  return <h1>Hello World</h1>
+import './styles/theme.css';
+import './styles/global.css';
+
+export default function App() {
+
+  return (
+    <>
+      <Heading />
+    </>
+  )
 }
