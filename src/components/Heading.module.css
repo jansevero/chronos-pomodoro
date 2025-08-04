@@ -1,8 +1,6 @@
-/* .heading {
-  background: purple;
-  color: black;
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
 }
-
-.cyan {
-  color: cyan;
-} */
