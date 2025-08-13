@@ -10,20 +10,10 @@ import { Footer } from './components/Footer';
 
 import './styles/theme.css';
 import './styles/global.css';
-import { Heading } from './components/Heading';
-import { useState } from 'react';
 
 export default function App() {
-  const [numero, setNumero] = useState(0);
-
-  function handleClick() {
-    setNumero(numero + 1);
-  }
-
   return (
     <>
-      <Heading>Número: {numero}</Heading>
-      <button onClick={handleClick}>Olá</button>
       <Container>
         <Logo />
       </Container>
@@ -40,7 +30,7 @@ export default function App() {
         <form className='form' action="">
           <div className='formRow'>
             <DefaultInput
-              labelText={numero.toString()}
+              labelText={'task'}
               id='meuInput'
               type='text'
               placeholder='Digite algo' />
