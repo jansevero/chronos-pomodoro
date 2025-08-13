@@ -1,9 +1,5 @@
 import styles from './styles.module.css';
 
-// type CyclesProps = {
-  
-// }
-
 export function Cycles() {
   return (
     <div className={styles.cycles}>
