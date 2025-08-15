@@ -5,8 +5,6 @@ import './styles/global.css';
 import { TaskContextProvider } from './contexts/TaskContext';
 
 export default function App() {
-  // const [state, setState] = useState(initialState);
-
   return (
     <TaskContextProvider>
       <Home />
