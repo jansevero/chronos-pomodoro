@@ -4,6 +4,7 @@ import './styles/theme.css';
 import './styles/global.css';
 import { useState } from 'react';
 import type { TaskStateModel } from './models/TaskStateModel';
+import { TaskContext } from './contexts/TaskContext';
 
 // export type TaskStateModel = {
 //   tasks: TaskModel[];
@@ -20,8 +21,8 @@ import type { TaskStateModel } from './models/TaskStateModel';
 
 const initialState: TaskStateModel = {
   tasks: [],
-  secondsLeft: 0,
-  formattedSecondsLeft: '00:00',
+  secondsRemaining: 0,
+  formattedSecondsRemaining: '00:00',
   activeTask: null,
   currentCycle: 0,
   config: {
@@ -34,5 +35,10 @@ const initialState: TaskStateModel = {
 export default function App() {
   const [state, setState] = useState(initialState);
 
-  return <Home state={state} setState={setState} />
+  return (
+    <TaskContext.Provider value={{outraCoisa: 123 }}>
+      <Home />
+    </TaskContext.Provider>
+  );
+
 }
