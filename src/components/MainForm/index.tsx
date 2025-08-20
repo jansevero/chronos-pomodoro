@@ -33,8 +33,8 @@ export function MainForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptedDate: null,
-      durationInMinutes: 1,
-       type: nextCycleType,
+      durationInMinutes: state.config[nextCycleType],
+      type: nextCycleType,
     };
 
     const secondsLeft = 1 * 60;
@@ -42,7 +42,7 @@ export function MainForm() {
     setState((prevState) => ({
       ...prevState,
       activeTask: newTask,
-      currentCycle: 1, //conferir depois
+      currentCycle: nextCycle, 
       secondsLeft,
       formattedSecondsLeft: '00:00',
       tasks: [...prevState.tasks, newTask],
