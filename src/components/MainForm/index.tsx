@@ -58,7 +58,10 @@ export function MainForm() {
           id='meuInput'
           type='text'
           placeholder='Digite algo'
-          ref={taskNameInput} />
+          ref={taskNameInput}
+          disabled={!!state.activeTask}
+          />
+          
       </div>
 
       <div className='formRow'>
