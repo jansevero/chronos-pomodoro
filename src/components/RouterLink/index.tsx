@@ -1,7 +1,15 @@
-// import { Link } from "react-router";
+import { Link } from "react-router";
 
-// type RouterLinkProps = React.ComponentProps<'a'>;
+type RouterLinkProps = {
+  children: React.ReactNode;
+  href: string;
+  props?: React.ComponentProps<'a'>;
+} & React.ComponentProps<'a'>;
 
-// export function RouterLink() {
-//   return <Link to={} />;
-// }
+export function RouterLink({
+  href,
+  children,
+  ...props
+} : RouterLinkProps) {
+  return <Link to={href} {...props}>{children}</Link>;
+}
