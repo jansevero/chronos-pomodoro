@@ -10,10 +10,12 @@ import { formatDate } from '../../utils/formatDate';
 import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
 import { useEffect, useState } from 'react';
+import { toastifyAdapter } from "../../adapters/toastifyAdapter";
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 export function History() {
   const { state, dispatch } = useTaskContext();
+  const [confirmClearHistory, setConfirmClearHistory] = useState(false);
   const hasTasks = state.tasks.length > 0;
 
   const [sortTasksOptions, setSortTaskOptions] = useState<SortTasksOptions>(
@@ -25,6 +27,14 @@ export function History() {
       };
     },
   );
+
+  useEffect(() => {
+    if (!confirmClearHistory) return;
+
+    setConfirmClearHistory(false);
+
+    dispatch({ type: TaskActionTypes.RESET_STATE });
+  }, [confirmClearHistory, dispatch]);
 
   useEffect(() => {
     setSortTaskOptions(prevState => ({
@@ -52,9 +62,10 @@ export function History() {
   }
 
   function handleResetHistory() {
-    if (!confirm('Tem certeza?')) return;
-
-    dispatch({ type: TaskActionTypes.RESET_STATE });
+    toastifyAdapter.dismiss();
+    toastifyAdapter.confirm('Tem certeza?', confirmation => {
+      setConfirmClearHistory(confirmation);
+    });
   }
 
   return (
