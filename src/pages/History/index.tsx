@@ -47,6 +47,12 @@ export function History() {
     }));
   }, [state.tasks]);
 
+  useEffect(() => {
+    return () => {
+      toastifyAdapter.dismiss();
+    };
+  }, []);
+
   function handleSortTasks({ field }: Pick<SortTasksOptions, 'field'>) {
     const newDirection = sortTasksOptions.direction === 'desc' ? 'asc' : 'desc';
 
